@@ -1,5 +1,7 @@
+import Navbar from "@/components/navbar/navbar";
 import type { Metadata } from "next";
 import { geistSans, geistMono } from "@/utils/fonts";
+import { Providers } from "@/app/providers/providers";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -13,11 +15,14 @@ const RootLayout = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white`}
       >
-        {children}
+        <Providers>
+          <Navbar />
+          {children}
+        </Providers>
       </body>
     </html>
   );
